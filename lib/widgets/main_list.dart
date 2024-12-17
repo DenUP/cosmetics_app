@@ -5,6 +5,19 @@ class MainList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+        body: SafeArea(
+      child: Column(
+        children: [
+          ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: 1,
+            itemBuilder: (context, index) {
+              Image.asset('assets/img/slider/christinaMuse.png');
+            },
+          )
+        ],
+      ),
+    ));
   }
 }
