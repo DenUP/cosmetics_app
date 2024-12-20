@@ -81,6 +81,10 @@ flutter:
       fonts:
         - asset: assets/fonts/VelaSans-Regular.ttf
         - asset: assets/fonts/VelaSans-SemiBold.ttf
+    - family: Raleway
+      fonts:
+        - asset: assets/fonts/Raleway-Bold.ttf
+        - asset: assets/fonts/Raleway-Medium.ttf
 
   #   - family: Trajan Pro
   #     fonts:

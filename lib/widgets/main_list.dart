@@ -106,7 +106,27 @@ class _MainListState extends State<MainList> {
               ),
             ],
           ),
-        )
+        ),
+        Positioned(
+            bottom: 29,
+            right: 12,
+            child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                    foregroundColor: Colors.black,
+                    minimumSize: const Size(120, 36),
+                    padding: const EdgeInsets.all(10),
+                    side: const BorderSide(color: Colors.white, width: 1),
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(3)))),
+                onPressed: () {},
+                child: const Text(
+                  'Перейти к акции',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'Raleway'),
+                )))
       ]),
     );
   }
