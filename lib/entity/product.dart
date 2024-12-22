@@ -3,6 +3,7 @@ class Product {
   final String title;
   final String img;
   final String price;
+  final String oldPrice;
   final bool stock;
   final bool onePlusOne;
 
@@ -12,5 +13,6 @@ class Product {
       required this.img,
       required this.price,
       required this.stock,
-      required this.onePlusOne});
+      required this.onePlusOne,
+      this.oldPrice = '0'});
 }

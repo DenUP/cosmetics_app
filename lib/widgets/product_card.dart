@@ -12,6 +12,7 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final stock = product.stock;
     final onePlusOne = product.onePlusOne;
+    final oldPrice = product.oldPrice;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6),
       width: 200,
@@ -91,13 +92,28 @@ class ProductCard extends StatelessWidget {
           const SizedBox(
             height: 8,
           ),
-          Text(product.price.rubString(),
-              style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                  letterSpacing: 1,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'Montserrat'))
+          Row(
+            children: [
+              Text(product.price.rubString(),
+                  style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      letterSpacing: 1,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'Montserrat')),
+              SizedBox(width: MediaQuery.of(context).size.width / 50),
+              oldPrice != '0'
+                  ? Text(product.oldPrice.rubString(),
+                      style: TextStyle(
+                          decoration: TextDecoration.lineThrough,
+                          color: Colors.black.withOpacity(0.2),
+                          fontSize: 16,
+                          letterSpacing: 1,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'Montserrat'))
+                  : const SizedBox()
+            ],
+          ),
         ],
       ),
     );

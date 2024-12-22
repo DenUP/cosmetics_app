@@ -4,7 +4,6 @@ import 'package:cosmetics_app/entity/product.dart';
 import 'package:cosmetics_app/entity/question.dart';
 import 'package:cosmetics_app/widgets/app_button.dart';
 import 'package:cosmetics_app/widgets/list_product.dart';
-import 'package:cosmetics_app/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 
 class MainList extends StatefulWidget {
@@ -68,6 +67,7 @@ final List<Product> stocks = [
       title: 'Muse Serum Supreme',
       img: 'assets/img/stocks/muse_Serum _Supreme.png',
       price: '10 195',
+      oldPrice: '10 195',
       stock: true,
       onePlusOne: false),
   Product(
@@ -75,6 +75,7 @@ final List<Product> stocks = [
       title: 'Unstress Revitalizing Toner',
       img: 'assets/img/stocks/unstress_Revitalizing_Toner.png',
       price: '1595',
+      oldPrice: '3195',
       stock: true,
       onePlusOne: true),
   Product(
@@ -82,6 +83,7 @@ final List<Product> stocks = [
       title: 'Unstress Revitalizing Toner',
       img: 'assets/img/stocks/unstress_Revitalizin_Toner.png',
       price: '3095',
+      oldPrice: '5999',
       stock: true,
       onePlusOne: true)
 ];
