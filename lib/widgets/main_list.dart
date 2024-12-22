@@ -1,6 +1,8 @@
 import 'package:cosmetics_app/core/app_color.dart';
 import 'package:cosmetics_app/entity/category.dart';
 import 'package:cosmetics_app/entity/product.dart';
+import 'package:cosmetics_app/entity/question.dart';
+import 'package:cosmetics_app/widgets/app_button.dart';
 import 'package:cosmetics_app/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +27,7 @@ final List<Category> category = [
   Category(title: 'Умывание', img: 'assets/img/category/ruki.png'),
 ];
 
-final List<Product> new_product = [
+final List<Product> newProduct = [
   Product(
       category: 'Сыворотка',
       title: 'Unstress Total Serenity Serum',
@@ -43,10 +45,17 @@ final List<Product> new_product = [
       price: '3095'),
 ];
 
+final List<Question> question = [
+  Question(img: 'assets/img/questions/demakiyash.png', title: 'Демакияж'),
+  Question(img: 'assets/img/questions/ochistka.png', title: 'Очищение'),
+  Question(img: 'assets/img/questions/svorotka.png', title: 'Сыворотка'),
+  Question(img: 'assets/img/questions/dnevnoi_krem.png', title: 'Дневной крем'),
+];
+
 class _MainListState extends State<MainList> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -55,6 +64,7 @@ class _MainListState extends State<MainList> {
             Slider(),
             ListCategory(),
             NewProducts(),
+            QuestionTest(),
           ],
         ),
       ),
@@ -161,26 +171,10 @@ class _SliderState extends State<Slider> {
           ],
         ),
       ),
-      Positioned(
+      const Positioned(
           bottom: 29,
           right: 12,
-          child: OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                  foregroundColor: Colors.black,
-                  minimumSize: const Size(120, 36),
-                  padding: const EdgeInsets.all(10),
-                  side: const BorderSide(color: Colors.white, width: 1),
-                  shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(3)))),
-              onPressed: () {},
-              child: const Text(
-                'Перейти к акции',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: 'Raleway'),
-              )))
+          child: AppButton(text: 'Перейти к акции', buttonWhite: true))
     ]);
   }
 }
@@ -256,9 +250,9 @@ class NewProducts extends StatelessWidget {
             itemExtent: 187,
             shrinkWrap: true,
             scrollDirection: Axis.horizontal,
-            itemCount: new_product.length,
+            itemCount: newProduct.length,
             itemBuilder: (context, index) {
-              return ProductCard(product: new_product[index]);
+              return ProductCard(product: newProduct[index]);
             },
           ),
         ),
@@ -270,12 +264,90 @@ class NewProducts extends StatelessWidget {
   }
 }
 
-
 class QuestionTest extends StatelessWidget {
   const QuestionTest({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Column(
+      children: [
+        Container(
+          // margin: const EdgeInsets.fromLTRB(22, 65, 11, 23),
+          height: 250,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            color: AppColor.backgroundQuestino,
+          ),
+          child: Stack(
+            // alignment: Alignment.topRight,
+            children: [
+              Positioned(
+                top: 0,
+                right: 0,
+                child:
+                    Image.asset('assets/img/questions/background_question.png'),
+              ),
+              const SizedBox(
+                height: 65,
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 65, 11, 27),
+                  child: ListView.builder(
+                    itemExtent: 105,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: question.length,
+                    itemBuilder: (context, index) {
+                      return Column(
+                        children: [
+                          Image.asset(
+                            question[index].img,
+                            width: 81,
+                            height: 75,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            question[index].title,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontFamily: 'Raleway',
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          )
+                        ],
+                      );
+                    },
+                  ),
+                ),
+              ),
+              const Positioned.fill(
+                  left: 25,
+                  bottom: 25,
+                  right: 25,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        'Ответьте на 10 вопросов,\nи мы подберем нужный уход ',
+                        style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black,
+                            fontFamily: 'Raleway'),
+                      ),
+                      Spacer(),
+                      AppButton(text: 'Пройти тест ', buttonWhite: false)
+                    ],
+                  )),
+            ],
+          ),
+        ),
+        // Text('dsadsa')
+      ],
+    );
   }
 }
