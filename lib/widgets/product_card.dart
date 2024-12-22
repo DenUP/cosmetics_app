@@ -1,4 +1,5 @@
 import 'package:cosmetics_app/core/app_color.dart';
+import 'package:cosmetics_app/core/extension/string_modif.dart';
 import 'package:cosmetics_app/entity/product.dart';
 import 'package:flutter/material.dart';
 
@@ -65,13 +66,13 @@ class ProductCard extends StatelessWidget {
           const SizedBox(
             height: 8,
           ),
-          Text(product.price,
+          Text(product.price.rubString(),
               style: const TextStyle(
                   color: Colors.black,
-                  fontSize: 14,
+                  fontSize: 16,
                   letterSpacing: 1,
                   fontWeight: FontWeight.w600,
-                  fontFamily: 'Raleway'))
+                  fontFamily: 'Montserrat'))
         ],
       ),
     );
