@@ -1,6 +1,7 @@
 import 'package:cosmetics_app/core/app_color.dart';
 import 'package:cosmetics_app/entity/category.dart';
 import 'package:cosmetics_app/entity/product.dart';
+import 'package:cosmetics_app/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 
 class MainList extends StatefulWidget {
@@ -24,13 +25,37 @@ final List<Category> category = [
   Category(title: 'Умывание', img: 'assets/img/category/ruki.png'),
 ];
 
+final List<Product> new_product = [
+  Product(
+      category: 'Сыворотка',
+      title: 'Unstress Total Serenity Serum',
+      img: 'assets/img/new_product/chirstiona_unstress_total.png',
+      price: '10 195'),
+  Product(
+      category: 'Тоник',
+      title: 'Unstress Revitalizing Toner ',
+      img: 'assets/img/new_product/christina_unstress_toner.png',
+      price: '3095'),
+  Product(
+      category: 'Тоник',
+      title: 'Unstress Revitalizing Toner ',
+      img: 'assets/img/new_product/christina_unstress_toner 2.png',
+      price: '3095'),
+];
+
 class _MainListState extends State<MainList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          children: [Slider(), ListCategory()],
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Slider(),
+            ListCategory(),
+            NewProducts(),
+          ],
         ),
       ),
     );
@@ -166,8 +191,9 @@ class ListCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 25),
-      height: 200,
+      width: MediaQuery.of(context).size.width,
+      padding: const EdgeInsets.fromLTRB(10, 20, 0, 0),
+      height: 150,
       child: ListView.builder(
         shrinkWrap: true,
         itemExtent: 95,
@@ -195,6 +221,48 @@ class ListCategory extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+}
+
+class NewProducts extends StatelessWidget {
+  const NewProducts({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const Padding(
+          padding: EdgeInsets.only(left: 15),
+          child: Text(
+            'Новинки',
+            style: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+                fontFamily: 'Raleway'),
+          ),
+        ),
+        Container(
+          padding: const EdgeInsets.fromLTRB(15, 4, 0, 24),
+          child: Image.asset('assets/img/new_product/liner_1.png'),
+        ),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          height: 300,
+          child: ListView.builder(
+            itemExtent: 187,
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemCount: new_product.length,
+            itemBuilder: (context, index) {
+              return ProductCard(product: new_product[index]);
+            },
+          ),
+        )
+      ],
     );
   }
 }
