@@ -1,7 +1,9 @@
 import 'package:cosmetics_app/core/app_color.dart';
-import 'package:cosmetics_app/entity/category.dart';
-import 'package:cosmetics_app/entity/product.dart';
-import 'package:cosmetics_app/entity/question.dart';
+import 'package:cosmetics_app/data/category.dart';
+import 'package:cosmetics_app/data/img_scroll.dart';
+import 'package:cosmetics_app/data/new_product.dart';
+import 'package:cosmetics_app/data/question.dart';
+import 'package:cosmetics_app/data/stocks.dart';
 import 'package:cosmetics_app/widgets/app_button.dart';
 import 'package:cosmetics_app/widgets/list_product.dart';
 import 'package:flutter/material.dart';
@@ -14,79 +16,6 @@ class MainList extends StatefulWidget {
 }
 
 int _currentPage = 0;
-List<String> _imgScroll = [
-  'assets/img/slider/lineRepair.png',
-  'assets/img/slider/christinaMuse.png'
-];
-
-final List<Category> category = [
-  Category(title: 'Наборы', img: 'assets/img/category/christina_2.png'),
-  Category(title: 'Для лица', img: 'assets/img/category/face.png'),
-  Category(title: 'Для глаз', img: 'assets/img/category/christina.png'),
-  Category(title: 'Для тела', img: 'assets/img/category/body.png'),
-  Category(title: 'Умывание', img: 'assets/img/category/ruki.png'),
-];
-
-final List<Product> newProduct = [
-  Product(
-    category: 'Сыворотка',
-    title: 'Unstress Total Serenity Serum',
-    img: 'assets/img/new_product/chirstiona_unstress_total.png',
-    price: '10 195',
-    stock: false,
-    onePlusOne: false,
-  ),
-  Product(
-    category: 'Тоник',
-    title: 'Unstress Revitalizing Toner ',
-    img: 'assets/img/new_product/christina_unstress_toner.png',
-    price: '3095',
-    stock: false,
-    onePlusOne: false,
-  ),
-  Product(
-    category: 'Тоник',
-    title: 'Unstress Revitalizing Toner ',
-    img: 'assets/img/new_product/christina_unstress_toner 2.png',
-    price: '3095',
-    stock: false,
-    onePlusOne: false,
-  ),
-];
-
-final List<Question> question = [
-  Question(img: 'assets/img/questions/demakiyash.png', title: 'Демакияж'),
-  Question(img: 'assets/img/questions/ochistka.png', title: 'Очищение'),
-  Question(img: 'assets/img/questions/svorotka.png', title: 'Сыворотка'),
-  Question(img: 'assets/img/questions/dnevnoi_krem.png', title: 'Дневной крем'),
-];
-
-final List<Product> stocks = [
-  Product(
-      category: 'Сыворотка',
-      title: 'Muse Serum Supreme',
-      img: 'assets/img/stocks/muse_Serum _Supreme.png',
-      price: '10 195',
-      oldPrice: '10 195',
-      stock: true,
-      onePlusOne: false),
-  Product(
-      category: 'Крем',
-      title: 'Unstress Revitalizing Toner',
-      img: 'assets/img/stocks/unstress_Revitalizing_Toner.png',
-      price: '1595',
-      oldPrice: '3195',
-      stock: true,
-      onePlusOne: true),
-  Product(
-      category: 'Тоник',
-      title: 'Unstress Revitalizing Toner',
-      img: 'assets/img/stocks/unstress_Revitalizin_Toner.png',
-      price: '3095',
-      oldPrice: '5999',
-      stock: true,
-      onePlusOne: true)
-];
 
 class _MainListState extends State<MainList> {
   @override
@@ -122,11 +51,12 @@ class Slider extends StatefulWidget {
 class _SliderState extends State<Slider> {
   @override
   Widget build(BuildContext context) {
+    final imgScroll = getImgScroll();
     return Stack(children: [
       SizedBox(
         height: 360,
         child: PageView.builder(
-          itemCount: _imgScroll.length,
+          itemCount: imgScroll.length,
           onPageChanged: (value) {
             setState(() {
               _currentPage = value;
@@ -136,7 +66,7 @@ class _SliderState extends State<Slider> {
             return Container(
               decoration: BoxDecoration(
                   image: DecorationImage(
-                image: AssetImage(_imgScroll[index]),
+                image: AssetImage(imgScroll[index]),
                 fit: BoxFit.cover,
               )),
             );
@@ -164,7 +94,7 @@ class _SliderState extends State<Slider> {
         left: 18,
         child: Row(
           children: List.generate(
-              _imgScroll.length,
+              imgScroll.length,
               (index) => Container(
                     margin: const EdgeInsets.symmetric(horizontal: 2),
                     height: 8,
@@ -224,6 +154,7 @@ class ListCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final category = getCategory();
     return Container(
       width: MediaQuery.of(context).size.width,
       padding: const EdgeInsets.fromLTRB(10, 20, 0, 0),
@@ -264,6 +195,7 @@ class NewProducts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final newProduct = getNewProduct();
     return ListProduct(
         products: newProduct,
         title: 'Новинки',
@@ -276,6 +208,7 @@ class QuestionTest extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final question = getQuestion();
     return Column(
       children: [
         Container(
@@ -363,6 +296,7 @@ class Stocks extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final stocks = getStocks();
     return ListProduct(
         products: stocks,
         title: 'Акции',
