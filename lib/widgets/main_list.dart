@@ -3,6 +3,7 @@ import 'package:cosmetics_app/entity/category.dart';
 import 'package:cosmetics_app/entity/product.dart';
 import 'package:cosmetics_app/entity/question.dart';
 import 'package:cosmetics_app/widgets/app_button.dart';
+import 'package:cosmetics_app/widgets/list_product.dart';
 import 'package:cosmetics_app/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 
@@ -29,20 +30,29 @@ final List<Category> category = [
 
 final List<Product> newProduct = [
   Product(
-      category: 'Сыворотка',
-      title: 'Unstress Total Serenity Serum',
-      img: 'assets/img/new_product/chirstiona_unstress_total.png',
-      price: '10 195'),
+    category: 'Сыворотка',
+    title: 'Unstress Total Serenity Serum',
+    img: 'assets/img/new_product/chirstiona_unstress_total.png',
+    price: '10 195',
+    stock: false,
+    onePlusOne: false,
+  ),
   Product(
-      category: 'Тоник',
-      title: 'Unstress Revitalizing Toner ',
-      img: 'assets/img/new_product/christina_unstress_toner.png',
-      price: '3095'),
+    category: 'Тоник',
+    title: 'Unstress Revitalizing Toner ',
+    img: 'assets/img/new_product/christina_unstress_toner.png',
+    price: '3095',
+    stock: false,
+    onePlusOne: false,
+  ),
   Product(
-      category: 'Тоник',
-      title: 'Unstress Revitalizing Toner ',
-      img: 'assets/img/new_product/christina_unstress_toner 2.png',
-      price: '3095'),
+    category: 'Тоник',
+    title: 'Unstress Revitalizing Toner ',
+    img: 'assets/img/new_product/christina_unstress_toner 2.png',
+    price: '3095',
+    stock: false,
+    onePlusOne: false,
+  ),
 ];
 
 final List<Question> question = [
@@ -50,6 +60,30 @@ final List<Question> question = [
   Question(img: 'assets/img/questions/ochistka.png', title: 'Очищение'),
   Question(img: 'assets/img/questions/svorotka.png', title: 'Сыворотка'),
   Question(img: 'assets/img/questions/dnevnoi_krem.png', title: 'Дневной крем'),
+];
+
+final List<Product> stocks = [
+  Product(
+      category: 'Сыворотка',
+      title: 'Muse Serum Supreme',
+      img: 'assets/img/stocks/muse_Serum _Supreme.png',
+      price: '10 195',
+      stock: true,
+      onePlusOne: false),
+  Product(
+      category: 'Крем',
+      title: 'Unstress Revitalizing Toner',
+      img: 'assets/img/stocks/unstress_Revitalizing_Toner.png',
+      price: '1595',
+      stock: true,
+      onePlusOne: true),
+  Product(
+      category: 'Тоник',
+      title: 'Unstress Revitalizing Toner',
+      img: 'assets/img/stocks/unstress_Revitalizin_Toner.png',
+      price: '3095',
+      stock: true,
+      onePlusOne: true)
 ];
 
 class _MainListState extends State<MainList> {
@@ -65,6 +99,10 @@ class _MainListState extends State<MainList> {
             ListCategory(),
             NewProducts(),
             QuestionTest(),
+            SizedBox(
+              height: 40,
+            ),
+            Stocks(),
           ],
         ),
       ),
@@ -224,43 +262,10 @@ class NewProducts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        const Padding(
-          padding: EdgeInsets.only(left: 15),
-          child: Text(
-            'Новинки',
-            style: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-                fontFamily: 'Raleway'),
-          ),
-        ),
-        Container(
-          padding: const EdgeInsets.fromLTRB(15, 4, 0, 24),
-          child: Image.asset('assets/img/new_product/liner_1.png'),
-        ),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          height: 300,
-          child: ListView.builder(
-            itemExtent: 187,
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            itemCount: newProduct.length,
-            itemBuilder: (context, index) {
-              return ProductCard(product: newProduct[index]);
-            },
-          ),
-        ),
-        const SizedBox(
-          height: 40,
-        )
-      ],
-    );
+    return ListProduct(
+        products: newProduct,
+        title: 'Новинки',
+        imgLiner: 'assets/img/new_product/liner_1.png');
   }
 }
 
@@ -346,8 +351,19 @@ class QuestionTest extends StatelessWidget {
             ],
           ),
         ),
-        // Text('dsadsa')
       ],
     );
+  }
+}
+
+class Stocks extends StatelessWidget {
+  const Stocks({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListProduct(
+        products: stocks,
+        title: 'Акции',
+        imgLiner: 'assets/img/stocks/liner.png');
   }
 }
