@@ -261,8 +261,21 @@ class NewProducts extends StatelessWidget {
               return ProductCard(product: new_product[index]);
             },
           ),
+        ),
+        const SizedBox(
+          height: 40,
         )
       ],
     );
+  }
+}
+
+
+class QuestionTest extends StatelessWidget {
+  const QuestionTest({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
   }
 }
