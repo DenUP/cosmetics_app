@@ -92,6 +92,10 @@ flutter:
         - asset: assets/fonts/Inter_24pt-Medium.ttf
         - asset: assets/fonts/Inter_24pt-Regular.ttf
         - asset: assets/fonts/Inter_24pt-SemiBold.ttf
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-Medium.ttf
+        - asset: assets/fonts/Montserrat-SemiBold.ttf
 
   #   - family: Trajan Pro
   #     fonts:
