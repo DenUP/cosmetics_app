@@ -15,7 +15,14 @@ List<String> _imgScroll = [
   'assets/img/slider/lineRepair.png',
   'assets/img/slider/christinaMuse.png'
 ];
-final List<Category> category = [];
+
+final List<Category> category = [
+  Category(title: 'Наборы', img: 'assets/img/category/christina_2.png'),
+  Category(title: 'Для лица', img: 'assets/img/category/face.png'),
+  Category(title: 'Для глаз', img: 'assets/img/category/christina.png'),
+  Category(title: 'Для тела', img: 'assets/img/category/body.png'),
+  Category(title: 'Умывание', img: 'assets/img/category/ruki.png'),
+];
 
 class _MainListState extends State<MainList> {
   @override
@@ -23,7 +30,7 @@ class _MainListState extends State<MainList> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          children: [Slider(), const ListCategory()],
+          children: [Slider(), ListCategory()],
         ),
       ),
     );
@@ -158,6 +165,36 @@ class ListCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text('2');
+    return Container(
+      padding: const EdgeInsets.only(top: 25),
+      height: 200,
+      child: ListView.builder(
+        shrinkWrap: true,
+        itemExtent: 95,
+        itemCount: category.length,
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (context, index) {
+          final categor = category[index];
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 6),
+            child: Column(
+              children: [
+                Image.asset(categor.img),
+                const SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  categor.title,
+                  style: const TextStyle(
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w600,
+                      fontSize: 12),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
   }
 }
