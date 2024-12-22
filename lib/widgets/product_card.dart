@@ -10,6 +10,8 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final stock = product.stock;
+    final onePlusOne = product.onePlusOne;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6),
       width: 200,
@@ -41,6 +43,29 @@ class ProductCard extends StatelessWidget {
                     product.img,
                     height: 172,
                   )),
+              stock == true
+                  ? Positioned(
+                      top: 8,
+                      right: 8,
+                      child: Image.asset(
+                        'assets/img/stocks/stock.png',
+                        width: MediaQuery.of(context).size.width / 12,
+                      ))
+                  : const SizedBox(),
+              onePlusOne == true
+                  ? Positioned(
+                      top: MediaQuery.of(context).size.height / 25,
+                      right: 8,
+                      width: MediaQuery.of(context).size.width / 12,
+                      child: Text(
+                        '1+1',
+                        style: TextStyle(
+                            color: AppColor.purple,
+                            fontWeight: FontWeight.w500,
+                            fontSize: MediaQuery.of(context).size.height / 50),
+                      ),
+                    )
+                  : const SizedBox()
             ],
           ),
           const SizedBox(
