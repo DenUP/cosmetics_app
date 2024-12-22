@@ -144,7 +144,8 @@ class _SliderState extends State<Slider> {
       const Positioned(
           bottom: 29,
           right: 12,
-          child: AppButton(text: 'Перейти к акции', buttonWhite: true))
+          child: AppButton(
+              text: 'Перейти к акции', background: false, borderIsWhite: true))
     ]);
   }
 }
@@ -280,7 +281,10 @@ class QuestionTest extends StatelessWidget {
                             fontFamily: 'Raleway'),
                       ),
                       Spacer(),
-                      AppButton(text: 'Пройти тест ', buttonWhite: false)
+                      AppButton(
+                          text: 'Пройти тест ',
+                          background: true,
+                          borderIsWhite: false)
                     ],
                   )),
             ],
