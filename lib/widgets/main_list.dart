@@ -1,6 +1,9 @@
 import 'package:cosmetics_app/core/app_color.dart';
 import 'package:cosmetics_app/entity/category.dart';
 import 'package:cosmetics_app/entity/product.dart';
+import 'package:cosmetics_app/entity/question.dart';
+import 'package:cosmetics_app/widgets/app_button.dart';
+import 'package:cosmetics_app/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 
 class MainList extends StatefulWidget {
@@ -24,13 +27,45 @@ final List<Category> category = [
   Category(title: 'Умывание', img: 'assets/img/category/ruki.png'),
 ];
 
+final List<Product> newProduct = [
+  Product(
+      category: 'Сыворотка',
+      title: 'Unstress Total Serenity Serum',
+      img: 'assets/img/new_product/chirstiona_unstress_total.png',
+      price: '10 195'),
+  Product(
+      category: 'Тоник',
+      title: 'Unstress Revitalizing Toner ',
+      img: 'assets/img/new_product/christina_unstress_toner.png',
+      price: '3095'),
+  Product(
+      category: 'Тоник',
+      title: 'Unstress Revitalizing Toner ',
+      img: 'assets/img/new_product/christina_unstress_toner 2.png',
+      price: '3095'),
+];
+
+final List<Question> question = [
+  Question(img: 'assets/img/questions/demakiyash.png', title: 'Демакияж'),
+  Question(img: 'assets/img/questions/ochistka.png', title: 'Очищение'),
+  Question(img: 'assets/img/questions/svorotka.png', title: 'Сыворотка'),
+  Question(img: 'assets/img/questions/dnevnoi_krem.png', title: 'Дневной крем'),
+];
+
 class _MainListState extends State<MainList> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          children: [Slider(), ListCategory()],
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Slider(),
+            ListCategory(),
+            NewProducts(),
+            QuestionTest(),
+          ],
         ),
       ),
     );
@@ -136,26 +171,10 @@ class _SliderState extends State<Slider> {
           ],
         ),
       ),
-      Positioned(
+      const Positioned(
           bottom: 29,
           right: 12,
-          child: OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                  foregroundColor: Colors.black,
-                  minimumSize: const Size(120, 36),
-                  padding: const EdgeInsets.all(10),
-                  side: const BorderSide(color: Colors.white, width: 1),
-                  shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(3)))),
-              onPressed: () {},
-              child: const Text(
-                'Перейти к акции',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: 'Raleway'),
-              )))
+          child: AppButton(text: 'Перейти к акции', buttonWhite: true))
     ]);
   }
 }
@@ -166,8 +185,9 @@ class ListCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 25),
-      height: 200,
+      width: MediaQuery.of(context).size.width,
+      padding: const EdgeInsets.fromLTRB(10, 20, 0, 0),
+      height: 150,
       child: ListView.builder(
         shrinkWrap: true,
         itemExtent: 95,
@@ -195,6 +215,139 @@ class ListCategory extends StatelessWidget {
           );
         },
       ),
+    );
+  }
+}
+
+class NewProducts extends StatelessWidget {
+  const NewProducts({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const Padding(
+          padding: EdgeInsets.only(left: 15),
+          child: Text(
+            'Новинки',
+            style: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+                fontFamily: 'Raleway'),
+          ),
+        ),
+        Container(
+          padding: const EdgeInsets.fromLTRB(15, 4, 0, 24),
+          child: Image.asset('assets/img/new_product/liner_1.png'),
+        ),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          height: 300,
+          child: ListView.builder(
+            itemExtent: 187,
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemCount: newProduct.length,
+            itemBuilder: (context, index) {
+              return ProductCard(product: newProduct[index]);
+            },
+          ),
+        ),
+        const SizedBox(
+          height: 40,
+        )
+      ],
+    );
+  }
+}
+
+class QuestionTest extends StatelessWidget {
+  const QuestionTest({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          // margin: const EdgeInsets.fromLTRB(22, 65, 11, 23),
+          height: 250,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            color: AppColor.backgroundQuestino,
+          ),
+          child: Stack(
+            // alignment: Alignment.topRight,
+            children: [
+              Positioned(
+                top: 0,
+                right: 0,
+                child:
+                    Image.asset('assets/img/questions/background_question.png'),
+              ),
+              const SizedBox(
+                height: 65,
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 65, 11, 27),
+                  child: ListView.builder(
+                    itemExtent: 105,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: question.length,
+                    itemBuilder: (context, index) {
+                      return Column(
+                        children: [
+                          Image.asset(
+                            question[index].img,
+                            width: 81,
+                            height: 75,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            question[index].title,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontFamily: 'Raleway',
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          )
+                        ],
+                      );
+                    },
+                  ),
+                ),
+              ),
+              const Positioned.fill(
+                  left: 25,
+                  bottom: 25,
+                  right: 25,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        'Ответьте на 10 вопросов,\nи мы подберем нужный уход ',
+                        style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black,
+                            fontFamily: 'Raleway'),
+                      ),
+                      Spacer(),
+                      AppButton(text: 'Пройти тест ', buttonWhite: false)
+                    ],
+                  )),
+            ],
+          ),
+        ),
+        // Text('dsadsa')
+      ],
     );
   }
 }
