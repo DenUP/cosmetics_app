@@ -10,6 +10,9 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final stock = product.stock;
+    final onePlusOne = product.onePlusOne;
+    final oldPrice = product.oldPrice;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6),
       width: 200,
@@ -41,6 +44,29 @@ class ProductCard extends StatelessWidget {
                     product.img,
                     height: 172,
                   )),
+              stock == true
+                  ? Positioned(
+                      top: 8,
+                      right: 8,
+                      child: Image.asset(
+                        'assets/img/stocks/stock.png',
+                        width: MediaQuery.of(context).size.width / 12,
+                      ))
+                  : const SizedBox(),
+              onePlusOne == true
+                  ? Positioned(
+                      top: MediaQuery.of(context).size.height / 25,
+                      right: 8,
+                      width: MediaQuery.of(context).size.width / 12,
+                      child: Text(
+                        '1+1',
+                        style: TextStyle(
+                            color: AppColor.purple,
+                            fontWeight: FontWeight.w500,
+                            fontSize: MediaQuery.of(context).size.height / 50),
+                      ),
+                    )
+                  : const SizedBox()
             ],
           ),
           const SizedBox(
@@ -66,13 +92,28 @@ class ProductCard extends StatelessWidget {
           const SizedBox(
             height: 8,
           ),
-          Text(product.price.rubString(),
-              style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                  letterSpacing: 1,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: 'Montserrat'))
+          Row(
+            children: [
+              Text(product.price.rubString(),
+                  style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      letterSpacing: 1,
+                      fontWeight: FontWeight.w600,
+                      fontFamily: 'Montserrat')),
+              SizedBox(width: MediaQuery.of(context).size.width / 50),
+              oldPrice != '0'
+                  ? Text(product.oldPrice.rubString(),
+                      style: TextStyle(
+                          decoration: TextDecoration.lineThrough,
+                          color: Colors.black.withOpacity(0.2),
+                          fontSize: 16,
+                          letterSpacing: 1,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'Montserrat'))
+                  : const SizedBox()
+            ],
+          ),
         ],
       ),
     );

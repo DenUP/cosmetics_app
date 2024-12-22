@@ -5,4 +5,5 @@ abstract class AppColor {
   static const graySlider = Color(0xFFD9D9D9);
   static const backgroundItem = Color(0xFFF2F2F2);
   static const backgroundQuestino = Color(0xFFEFEFF0);
+  static const purple = Color(0xFFF47DDA);
 }
