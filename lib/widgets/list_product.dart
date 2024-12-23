@@ -6,7 +6,11 @@ class ListProduct extends StatelessWidget {
   final List<Product> products;
   final String title;
   final String imgLiner;
-  const ListProduct({super.key, required this.products, required this.title, required this.imgLiner});
+  const ListProduct(
+      {super.key,
+      required this.products,
+      required this.title,
+      required this.imgLiner});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +31,10 @@ class ListProduct extends StatelessWidget {
         ),
         Container(
           padding: const EdgeInsets.fromLTRB(15, 4, 0, 24),
-          child: Image.asset(imgLiner),
+          child: Image.asset(
+            imgLiner,
+            width: MediaQuery.of(context).size.width / 3.5,
+          ),
         ),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -47,6 +54,5 @@ class ListProduct extends StatelessWidget {
         )
       ],
     );
-    
   }
 }
