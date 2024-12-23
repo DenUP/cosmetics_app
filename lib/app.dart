@@ -1,4 +1,5 @@
 import 'package:cosmetics_app/screen/main_list.dart';
+import 'package:cosmetics_app/screen/main_navigation.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {
@@ -9,7 +10,10 @@ class App extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       debugShowCheckedModeBanner: false,
-      routes: {'/': (context) => const MainList()},
+      routes: {
+        '/': (context) => const MainNavigation(),
+        '/main': (context) => const MainList(),
+      },
     );
   }
 }
