@@ -6,4 +6,5 @@ abstract class AppColor {
   static const backgroundItem = Color(0xFFF2F2F2);
   static const backgroundQuestino = Color(0xFFEFEFF0);
   static const purple = Color(0xFFF47DDA);
+  static const greyNavigation = Color(0xFFC8CACE);
 }
