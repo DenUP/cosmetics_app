@@ -1,5 +1,7 @@
 import 'package:cosmetics_app/core/app_color.dart';
+import 'package:cosmetics_app/data/button_main_list.dart';
 import 'package:cosmetics_app/data/category.dart';
+import 'package:cosmetics_app/data/hit_list.dart';
 import 'package:cosmetics_app/data/img_scroll.dart';
 import 'package:cosmetics_app/data/new_product.dart';
 import 'package:cosmetics_app/data/question.dart';
@@ -34,6 +36,11 @@ class _MainListState extends State<MainList> {
               height: 40,
             ),
             Stocks(),
+            ButtonList(),
+            SizedBox(
+              height: 25,
+            ),
+            HitItem(),
           ],
         ),
       ),
@@ -144,7 +151,14 @@ class _SliderState extends State<Slider> {
       const Positioned(
           bottom: 29,
           right: 12,
-          child: AppButton(text: 'Перейти к акции', buttonWhite: true))
+          child: AppButton(
+            text: 'Перейти к акции',
+            background: Colors.transparent,
+            border: Colors.white,
+            textIsWhite: true,
+            radius: 3,
+            textSize: 12,
+          ))
     ]);
   }
 }
@@ -280,7 +294,14 @@ class QuestionTest extends StatelessWidget {
                             fontFamily: 'Raleway'),
                       ),
                       Spacer(),
-                      AppButton(text: 'Пройти тест ', buttonWhite: false)
+                      AppButton(
+                        text: 'Пройти тест ',
+                        background: Colors.black,
+                        border: Colors.black,
+                        textIsWhite: true,
+                        radius: 6,
+                        textSize: 12,
+                      )
                     ],
                   )),
             ],
@@ -301,5 +322,45 @@ class Stocks extends StatelessWidget {
         products: stocks,
         title: 'Акции',
         imgLiner: 'assets/img/stocks/liner.png');
+  }
+}
+
+class ButtonList extends StatelessWidget {
+  const ButtonList({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final buttonMainList = getButtonMainList();
+    return GridView.count(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        shrinkWrap: true,
+        crossAxisCount: 2,
+        mainAxisSpacing: 8,
+        crossAxisSpacing: 7,
+        childAspectRatio: 168 / 60,
+        children: buttonMainList
+            .map((item) => AppButton(
+                  text: item,
+                  background: Colors.transparent,
+                  border: Colors.black.withOpacity(0.2),
+                  textIsWhite: false,
+                  radius: 9,
+                  textSize: 14,
+                ))
+            .toList());
+  }
+}
+
+class HitItem extends StatelessWidget {
+  const HitItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final hitList = getHitList();
+    return ListProduct(
+      title: 'Хиты',
+      imgLiner: 'assets/img/hit/liner_orange.png',
+      products: hitList,
+    );
   }
 }

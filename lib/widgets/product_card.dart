@@ -55,7 +55,7 @@ class ProductCard extends StatelessWidget {
                   : const SizedBox(),
               onePlusOne == true
                   ? Positioned(
-                      top: MediaQuery.of(context).size.height / 25,
+                      top: MediaQuery.of(context).size.height / 22,
                       right: 8,
                       width: MediaQuery.of(context).size.width / 12,
                       child: Text(
@@ -63,7 +63,7 @@ class ProductCard extends StatelessWidget {
                         style: TextStyle(
                             color: AppColor.purple,
                             fontWeight: FontWeight.w500,
-                            fontSize: MediaQuery.of(context).size.height / 50),
+                            fontSize: MediaQuery.of(context).size.height / 55),
                       ),
                     )
                   : const SizedBox()
