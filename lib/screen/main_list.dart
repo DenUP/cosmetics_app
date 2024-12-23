@@ -1,6 +1,7 @@
 import 'package:cosmetics_app/core/app_color.dart';
 import 'package:cosmetics_app/data/button_main_list.dart';
 import 'package:cosmetics_app/data/category.dart';
+import 'package:cosmetics_app/data/hit_list.dart';
 import 'package:cosmetics_app/data/img_scroll.dart';
 import 'package:cosmetics_app/data/new_product.dart';
 import 'package:cosmetics_app/data/question.dart';
@@ -36,6 +37,10 @@ class _MainListState extends State<MainList> {
             ),
             Stocks(),
             ButtonList(),
+            SizedBox(
+              height: 25,
+            ),
+            HitItem(),
           ],
         ),
       ),
@@ -325,7 +330,7 @@ class ButtonList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _buttonMainList = getButtonMainList();
+    final buttonMainList = getButtonMainList();
     return GridView.count(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         shrinkWrap: true,
@@ -333,7 +338,7 @@ class ButtonList extends StatelessWidget {
         mainAxisSpacing: 8,
         crossAxisSpacing: 7,
         childAspectRatio: 168 / 60,
-        children: _buttonMainList
+        children: buttonMainList
             .map((item) => AppButton(
                   text: item,
                   background: Colors.transparent,
@@ -343,5 +348,19 @@ class ButtonList extends StatelessWidget {
                   textSize: 14,
                 ))
             .toList());
+  }
+}
+
+class HitItem extends StatelessWidget {
+  const HitItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final hitList = getHitList();
+    return ListProduct(
+      title: 'Хиты',
+      imgLiner: 'assets/img/hit/liner_orange.png',
+      products: hitList,
+    );
   }
 }
