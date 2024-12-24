@@ -71,7 +71,7 @@ class ListMenuCatalog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final listMenu = listMenuMain;
+    final listMenu = getListMenuMain();
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -81,7 +81,7 @@ class ListMenuCatalog extends StatelessWidget {
         itemCount: listMenu.length,
         itemBuilder: (context, index) {
           return ListTile(
-            titleTextStyle: TextStyle(
+            titleTextStyle: const TextStyle(
               letterSpacing: 1,
               fontSize: 20,
               fontWeight: FontWeight.w600,
@@ -90,7 +90,7 @@ class ListMenuCatalog extends StatelessWidget {
             ),
             onTap: () {
               if (listMenu[index].title == 'Тип кожи') {
-                Navigator.of(context).pushNamed('/katalog/type');
+                Navigator.pushNamed(context, '/katalog/type');
               }
             },
             title: listMenu[index].title == 'Акции'
@@ -101,7 +101,7 @@ class ListMenuCatalog extends StatelessWidget {
                       const SizedBox(
                         width: 4,
                       ),
-                      ImageIcon(
+                      const ImageIcon(
                           AssetImage('assets/img/stocks/stock_purple.png')),
                     ],
                   )

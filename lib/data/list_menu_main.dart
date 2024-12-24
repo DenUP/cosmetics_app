@@ -2,7 +2,7 @@ import '../entity/list_menu.dart';
 
 // Список - Каталог (Меню)
 
-List<ListMenu> listMenuMain = [
+List<ListMenu> _listMenuMain = [
   ListMenu(title: 'Назначение', isStocks: false),
   ListMenu(title: 'Тип средства', isStocks: false),
   ListMenu(title: 'Тип кожи', isStocks: false),
@@ -14,7 +14,7 @@ List<ListMenu> listMenuMain = [
 
 // Список - По типу кожи
 
-// List<ListMenu> getListMenuMain() => _listMenuMain;
+List<ListMenu> getListMenuMain() => _listMenuMain;
 
 List<ListMenu> _listTypeKozhi = [
   ListMenu(title: 'Жирная', isStocks: false),

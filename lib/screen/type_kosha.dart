@@ -26,17 +26,30 @@ class TypeKosha extends StatelessWidget {
         centerTitle: true,
         title: const Text('По типу кожи'),
       ),
-      body: Column(
-        children: [
-          const SizedBox(
-            height: 24,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ListMenuWidget(listMenu: listTypeKozhi, fontSize: 18),
-          )
-        ],
+      body: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: ListView.builder(
+        shrinkWrap: true,
+        itemCount: listTypeKozhi.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            titleTextStyle: const TextStyle(
+              letterSpacing: 1,
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+              color: Colors.black,
+              fontFamily: 'Raleway',
+            ),
+            onTap: () {
+              if (listTypeKozhi[index].title == 'Жирная') {
+                Navigator.pushNamed(context, '/katalog/type');
+              }
+            },
+            title:  Text(listTypeKozhi[index].title),
+          );
+        },
       ),
+    )
     );
   }
 }
