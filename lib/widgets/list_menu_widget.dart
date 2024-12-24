@@ -12,29 +12,35 @@ class ListMenuWidget extends StatelessWidget {
     this.onPressedd,
   });
 
-  void NullCallback() {
-    return;
-  }
-
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
+      // itemExtent: 52,
+      shrinkWrap: true,
+      scrollDirection: Axis.vertical,
       itemCount: listMenu.length,
       itemBuilder: (context, index) {
         return Row(
+          mainAxisSize: MainAxisSize.max,
           children: [
             TextButton(
-                onPressed: onPressedd ?? NullCallback,
+                onPressed: onPressedd,
                 child: Text(
                   listMenu[index].title,
                   style: TextStyle(
-                      fontSize: fontSize,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                      fontFamily: 'Raleway'),
+                    letterSpacing: 1,
+                    fontSize: fontSize,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                    fontFamily: 'Raleway',
+                  ),
                 )),
             listMenu[index].isStocks == true
-                ? Image.asset('assets/img/stocks/stock_purple.png')
+                ? Image.asset(
+                    'assets/img/stocks/stock_purple.png',
+                    width: MediaQuery.of(context).size.width / 12,
+                  )
                 : const SizedBox(),
           ],
         );
