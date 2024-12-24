@@ -1,4 +1,5 @@
 import 'package:cosmetics_app/core/app_color.dart';
+import 'package:cosmetics_app/screen/katalog.dart';
 import 'package:cosmetics_app/screen/main_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,9 +15,7 @@ class _MainNavigationState extends State<MainNavigation> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     MainList(),
-    Text(
-      'Index 1: Business',
-    ),
+    Katalog(),
     Text(
       'Index 2: School',
     ),
