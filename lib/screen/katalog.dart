@@ -1,5 +1,6 @@
 import 'package:cosmetics_app/core/app_color.dart';
 import 'package:cosmetics_app/data/list_menu_main.dart';
+import 'package:cosmetics_app/screen/type_kosha.dart';
 import 'package:cosmetics_app/widgets/app_button.dart';
 import 'package:cosmetics_app/widgets/list_menu_widget.dart';
 import 'package:flutter/material.dart';
@@ -17,9 +18,6 @@ class Katalog extends StatelessWidget {
               height: 63,
             ),
             SearchForm(),
-            SizedBox(
-              height: 40,
-            ),
             ListMenuCatalog(),
             SizedBox(
               height: 50,
@@ -73,19 +71,45 @@ class ListMenuCatalog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final listMenu = getListMenuMain();
+    final listMenu = listMenuMain;
+
     return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          children: [
-            ListMenuWidget(
-              listMenu: listMenu,
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: ListView.builder(
+        // itemExtent: 300,
+        shrinkWrap: true,
+        itemCount: listMenu.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            titleTextStyle: TextStyle(
+              letterSpacing: 1,
               fontSize: 20,
-              onPressedd: () =>
-                  Navigator.of(context).pushNamed('/katalog/type'),
+              fontWeight: FontWeight.w600,
+              color: Colors.black,
+              fontFamily: 'Raleway',
             ),
-          ],
-        ));
+            onTap: () {
+              if (listMenu[index].title == 'Тип кожи') {
+                Navigator.of(context).pushNamed('/katalog/type');
+              }
+            },
+            title: listMenu[index].title == 'Акции'
+                ? Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(listMenu[index].title),
+                      const SizedBox(
+                        width: 4,
+                      ),
+                      ImageIcon(
+                          AssetImage('assets/img/stocks/stock_purple.png')),
+                    ],
+                  )
+                : Text(listMenu[index].title),
+          );
+        },
+      ),
+    );
   }
 }
 

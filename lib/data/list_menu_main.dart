@@ -1,6 +1,8 @@
 import '../entity/list_menu.dart';
 
-List<ListMenu> _listMenuMain = [
+// Список - Каталог (Меню)
+
+List<ListMenu> listMenuMain = [
   ListMenu(title: 'Назначение', isStocks: false),
   ListMenu(title: 'Тип средства', isStocks: false),
   ListMenu(title: 'Тип кожи', isStocks: false),
@@ -10,4 +12,16 @@ List<ListMenu> _listMenuMain = [
   ListMenu(title: 'Консультация\nс косметологом ', isStocks: false),
 ];
 
-List<ListMenu> getListMenuMain() => _listMenuMain;
+// Список - По типу кожи
+
+// List<ListMenu> getListMenuMain() => _listMenuMain;
+
+List<ListMenu> _listTypeKozhi = [
+  ListMenu(title: 'Жирная', isStocks: false),
+  ListMenu(title: 'Комбинированная', isStocks: false),
+  ListMenu(title: 'Нормальная', isStocks: false),
+  ListMenu(title: 'Сухая', isStocks: false),
+  ListMenu(title: 'Любой тип', isStocks: false),
+];
+
+List<ListMenu> getListTypeKozhi() => _listTypeKozhi;

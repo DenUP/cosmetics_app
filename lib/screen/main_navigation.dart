@@ -17,10 +17,10 @@ class _MainNavigationState extends State<MainNavigation> {
     MainList(),
     Katalog(),
     Text(
-      'Index 2: School',
+      'Корзина',
     ),
     Text(
-      'Index 3: School',
+      'Профиль',
     ),
   ];
   void _onItemTapped(int index) {
@@ -33,7 +33,9 @@ class _MainNavigationState extends State<MainNavigation> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: _widgetOptions.elementAt(_selectedIndex),
+      // body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
+          // bottomNavigationBar: BottomNavigationBar(
           iconSize: 24,
           items: const [
             BottomNavigationBarItem(
