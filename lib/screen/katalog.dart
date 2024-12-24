@@ -14,6 +14,10 @@ class Katalog extends StatelessWidget {
               height: 63,
             ),
             SearchForm(),
+            SizedBox(
+              height: 40,
+            ),
+            ListMenuCatalog(),
           ],
         ),
       ),
@@ -52,6 +56,20 @@ class SearchForm extends StatelessWidget {
           focusedBorder:
               UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
         ),
+      ),
+    );
+  }
+}
+
+class ListMenuCatalog extends StatelessWidget {
+  const ListMenuCatalog({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        children: [TextButton(onPressed: () {}, child: Text('1231'))],
       ),
     );
   }
