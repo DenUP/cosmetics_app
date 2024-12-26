@@ -39,7 +39,7 @@ class _AppButtonState extends State<AppButton> {
             shape: RoundedRectangleBorder(
                 borderRadius:
                     BorderRadius.all(Radius.circular(widget.radius)))),
-        onPressed: widget.onPressed,
+        onPressed: widget.onPressed ?? () {},
         child: Text(
           widget.text,
           style: TextStyle(
