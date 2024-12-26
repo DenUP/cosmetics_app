@@ -24,7 +24,9 @@ class TypeKosha extends StatelessWidget {
           },
         ),
         centerTitle: true,
-        title: const Text('По типу кожи'),
+        title: const Text(
+          'По типу кожи',
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),

@@ -78,6 +78,7 @@ class _KatalogShopState extends State<KatalogShop> {
                 const Spacer(),
                 IconButton(
                     onPressed: () {
+                      Navigator.of(context).pushNamed('/katalog/filter');
                       // Путь -> Filter
                     },
                     icon: const ImageIcon(
