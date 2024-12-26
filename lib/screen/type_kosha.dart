@@ -27,29 +27,51 @@ class TypeKosha extends StatelessWidget {
         title: const Text('По типу кожи'),
       ),
       body: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: ListView.builder(
-        shrinkWrap: true,
-        itemCount: listTypeKozhi.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            titleTextStyle: const TextStyle(
-              letterSpacing: 1,
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
-              color: Colors.black,
-              fontFamily: 'Raleway',
-            ),
-            onTap: () {
-              if (listTypeKozhi[index].title == 'Жирная') {
-                Navigator.pushNamed(context, '/katalog/type');
-              }
-            },
-            title:  Text(listTypeKozhi[index].title),
-          );
-        },
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: listTypeKozhi.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              titleTextStyle: const TextStyle(
+                letterSpacing: 1,
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+                color: Colors.black,
+                fontFamily: 'Raleway',
+              ),
+              onTap: () {
+                if (listTypeKozhi[index].title == 'Жирная') {
+                  Navigator.pushNamed(context, '/katalog/type/zhirnay');
+                }
+              },
+              title: Text(listTypeKozhi[index].title),
+            );
+          },
+        ),
       ),
-    )
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 1, // Каталог выбран
+        onTap: (index) {},
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Главная',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Каталог',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            label: 'Корзина',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Профиль',
+          ),
+        ],
+      ),
     );
   }
 }

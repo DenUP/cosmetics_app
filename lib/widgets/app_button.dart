@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
-class AppButton extends StatelessWidget {
+class AppButton extends StatefulWidget {
   final String text;
   final Color background;
   final Color border;
   final bool textIsWhite;
   final double radius;
   final double textSize;
+  final VoidCallback? onPressed;
+  final FontWeight? fontWeight;
 
   const AppButton({
     super.key,
@@ -16,26 +18,34 @@ class AppButton extends StatelessWidget {
     required this.textIsWhite,
     required this.radius,
     required this.textSize,
+    this.onPressed,
+    this.fontWeight,
   });
 
+  @override
+  State<AppButton> createState() => _AppButtonState();
+}
+
+class _AppButtonState extends State<AppButton> {
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
         style: OutlinedButton.styleFrom(
-            backgroundColor: background,
-            foregroundColor: textIsWhite ? Colors.black : Colors.white,
+            backgroundColor: widget.background,
+            foregroundColor: widget.textIsWhite ? Colors.black : Colors.white,
             minimumSize: const Size(120, 36),
             padding: const EdgeInsets.all(10),
-            side: BorderSide(color: border, width: 1),
+            side: BorderSide(color: widget.border, width: 1),
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(radius)))),
-        onPressed: () {},
+                borderRadius:
+                    BorderRadius.all(Radius.circular(widget.radius)))),
+        onPressed: widget.onPressed,
         child: Text(
-          text,
+          widget.text,
           style: TextStyle(
-              color: textIsWhite ? Colors.white : Colors.black,
-              fontSize: textSize,
-              fontWeight: FontWeight.w600,
+              color: widget.textIsWhite ? Colors.white : Colors.black,
+              fontSize: widget.textSize,
+              fontWeight: widget.fontWeight ?? FontWeight.w600,
               fontFamily: 'Raleway'),
         ));
   }
