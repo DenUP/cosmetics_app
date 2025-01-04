@@ -1,8 +1,6 @@
 import 'package:cosmetics_app/core/app_color.dart';
 import 'package:cosmetics_app/data/list_menu_main.dart';
-import 'package:cosmetics_app/screen/type_kosha.dart';
 import 'package:cosmetics_app/widgets/app_button.dart';
-import 'package:cosmetics_app/widgets/list_menu_widget.dart';
 import 'package:flutter/material.dart';
 
 class Katalog extends StatelessWidget {

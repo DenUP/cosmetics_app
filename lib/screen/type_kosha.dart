@@ -1,5 +1,4 @@
 import 'package:cosmetics_app/data/list_menu_main.dart';
-import 'package:cosmetics_app/widgets/list_menu_widget.dart';
 import 'package:flutter/material.dart';
 
 class TypeKosha extends StatelessWidget {

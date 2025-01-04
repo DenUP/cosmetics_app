@@ -1,16 +1,26 @@
-# cosmetics_app
+# 💄 Сosmetics_app
 
-A new Flutter project.
 
-## Getting Started
+<b>Сosmetics_app - </b>  это интернет-магазин косметики, разработанный для тестового задания на стажировку по <b>Flutter в PURRWEB 2024</b>. 
 
-This project is a starting point for a Flutter application.
+## **Image Gallery**
 
-A few resources to get you started if this is your first Flutter project:
+<br>
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+<p align="center">
+<img src="readme/main.png" alt="Kinoteka-description" width="30%" />
+<img src="readme/222.gif" alt="Kinoteka-favorite" width="35%" />
+<img src="readme/main2.png" alt="Kinoteka-news" width="30%" />
+<
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+</p>
+<hr/>
+
+### Проект включает в себя:
+- Функциональность для поиска и заказа товаров,
+- Фильтрации продуктов по различным параметрам
+- Просмотра подробной информации о продуктах. 
+
+
+В приложении реализован <b>слайдер для добавления изображений акций</b>, удобный скролл ленты, категорий товаров. Также присутствуют разделы "Хиты продаж" и "Новинки". В каталоге доступен удобный поиск по категориям и типу кожи, например, можно выбрать "Тип кожи - Жирная". Для упрощения выбора товара предусмотрена система фильтров.
+
